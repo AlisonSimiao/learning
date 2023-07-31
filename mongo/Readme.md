@@ -151,6 +151,8 @@ criar na coleção pessoas dois dados dentro do array
 
 `modifiedCount`: É o número de documentos que foram efetivamente modificados pela operação. Neste caso, 1 documento foi modificado como resultado da operação.
 
+`deletedCount`: informa o número de documentos que foram excluídos com sucesso durante a operação de exclusão. Essa propriedade é útil para saber quantos documentos foram afetados pela operação.
+
 ## Operadores
 
 > db.pessoas.find({idade: {$gt: 456} })
