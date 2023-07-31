@@ -155,31 +155,32 @@ criar na coleção pessoas dois dados dentro do array
 
 > db.pessoas.find({idade: {$gt: 456} })
 
-operador | descrição
---- | ---
-$eq |Igual a um valor específico.
-$ne |Diferente de um valor específico.
-$gt |Maior que um valor específico.
-$gte| Maior ou igual a um valor específico.
-$lt |Menor que um valor específico.
-$lte | Menor ou igual a um valor específico.
-$and | Realiza a operação lógica AND em várias condições.
-$or | Realiza a operação lógica OR em várias condições.
-$not | Nega uma expressão lógica.
-$exists | Verifica se um campo existe ou não em um documento.
-$type | Verifica se um campo é de um tipo de dado específico.
-$project | Controla quais campos incluir ou excluir nos resultados da consulta.
-$in | Verifica se um valor está presente em uma matriz.
-$nin | Verifica se um valor não está presente em uma matriz.
-$all | Verifica se todos os valores fornecidos estão presentes em uma matriz.
-$elemMatch | Realiza uma consulta em uma matriz de documentos e retorna o primeiro documento que corresponde aos critérios especificados.
-$set | Atualiza o valor de um campo específico.
-$unset | Remove um campo de um documento.
-$inc | Incrementa o valor numérico de um campo.
-$push | Adiciona um elemento a uma matriz.
-$pull | Remove elementos de uma matriz que atendam a determinados critérios.
-$addToSet | Adiciona um elemento a uma matriz, apenas se ele ainda não existir.
-$pop | Remove o primeiro ou o último elemento de uma matriz.
+| Operador   | Descrição | Exemplo|
+|------------|-----------|--------|
+| `$eq`      | Igual a um valor específico.                         | `{ idade: { $eq: 30 } }`              |
+| `$ne`      | Diferente de um valor específico.                    | `{ status: { $ne: "concluído" } }`     |
+| `$gt`      | Maior que um valor específico.                       | `{ quantidade: { $gt: 100 } }`        |
+| `$gte`     | Maior ou igual a um valor específico.                | `{ quantidade: { $gte: 50 } }`        |
+| `$lt`      | Menor que um valor específico.                       | `{ preço: { $lt: 10.00 } }`           |
+| `$lte`     | Menor ou igual a um valor específico.                | `{ preço: { $lte: 20.00 } }`          |
+| `$and`     | Realiza a operação lógica AND em várias condições.   | `{ $and: [{ idade: 30 }, { cidade: "São Paulo" }] }` |
+| `$or`      | Realiza a operação lógica OR em várias condições.    | `{ $or: [{ nome: "João" }, { nome: "Maria" }] }`    |
+| `$not`     | Nega uma expressão lógica.                           | `{ $not: { status: "concluído" } }`   |
+| `$exists`  | Verifica se um campo existe ou não em um documento.  | `{ campo: { $exists: true } }`        |
+| `$type`    | Verifica se um campo é de um tipo de dado específico.| `{ idade: { $type: "number" } }`      |
+| `$project` | Controla quais campos incluir ou excluir nos resultados da consulta. | - |
+| `$in`      | Verifica se um valor está presente em uma matriz.    | `{ categoria: { $in: ["eletrônicos", "computadores"] } }` |
+| `$nin`     | Verifica se um valor não está presente em uma matriz.| `{ status: { $nin: ["concluído", "cancelado"] } }`  |
+| `$all`     | Verifica se todos os valores fornecidos estão presentes em uma matriz. | `{ tags: { $all: ["mongodb", "database"] } }` |
+| `$elemMatch` | Realiza uma consulta em uma matriz de documentos e retorna o primeiro documento que corresponde aos critérios especificados. | `{ comentarios: { $elemMatch: { autor: "Maria", avaliacao: { $gte: 4 } } } }` |
+| `$set`     | Atualiza o valor de um campo específico.             | `{ $set: { status: "em andamento" } }` |
+| `$unset`   | Remove um campo de um documento.                     | `{ $unset: { campo: 1 } }`            |
+| `$inc`     | Incrementa o valor numérico de um campo.             | `{ $inc: { quantidade: 5 } }`         |
+| `$push`    | Adiciona um elemento a uma matriz.                   | `{ $push: { tags: "nosql" } }`        |
+| `$pull`    | Remove elementos de uma matriz que atendam a determinados critérios. | `{ $pull: { tags: "desatualizado" } }`  |
+| `$addToSet`| Adiciona um elemento a uma matriz, apenas se ele ainda não existir. | `{ $addToSet: { categorias: "acessórios" } }` |
+| `$pop`     | Remove o primeiro ou o último elemento de uma matriz. | `{ $pop: { comentarios: -1 } }`      |
+
 
 ## Tipos de dados
 
