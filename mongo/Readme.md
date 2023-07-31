@@ -21,6 +21,38 @@ show dbs | mostra todos os bancos de dados ja criados e com pelo menos um dado
 show collections | mostra todas as coleções(tabelas, em SQL) presentes no banco corrente
 db | passa a se referir ao banco de dados current e suas funções sao acessadas como um [objeto js](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Working_with_objects)
 
+## Indices
+
+Em MongoDB, índices (ou indexes, em inglês) são estruturas de dados que melhoram o desempenho das consultas, permitindo que o banco de dados localize os dados de forma mais eficiente.
+
+### Criação Automática de Índices:
+Por padrão, o MongoDB cria automaticamente um índice no campo _id para cada documento, garantindo um identificador único para cada entrada.
+
+### Melhores Práticas para Índices:
+
+Crie apenas índices necessários para as consultas que você utiliza com frequência. Índices desnecessários podem desacelerar as operações de gravação e aumentar os requisitos de armazenamento.
+Considere criar índices compostos para padrões de consulta frequentemente usados que envolvam vários campos.
+Revise regularmente o uso de índices e remova os que não são mais necessários.
+
+### Estratégias de Indexação:
+A escolha de índices e estratégias de indexação depende da natureza dos seus dados e dos tipos de consultas que você realiza. A indexação eficiente pode melhorar significativamente o desempenho das consultas, especialmente para coleções grande
+
+### Tipos de Índices:
+O MongoDB suporta vários tipos de índices, incluindo:
+tipo | descricao
+--- | ---
+Índice de campo único | Criado em um único campo de um documento.
+Índice composto | Criado em vários campos juntos em um documento.
+Índice de várias chaves (Multikey Index) | Usado para indexar arrays, permitindo consultas eficientes em elementos de arrays.
+Índice de texto | Otimizado para pesquisa de texto completo em conteúdo de strings.
+Índice geoespacial | Projetado para consultas baseadas em localização em dados geoespaciais.
+Índice hash | Aplica um hash nos valores do campo indexado, usado para distribuição de dados e sharding.
+
+operação | descricao
+--- | ---
+`createIndex({ nomeDoCampo: 1 })`|criar um índice no campo "nomeDoCampo" de uma coleção chamada "minhaColecao". Aqui, 1 indica ordem ascendente. Para ordem descendente, você usaria -1.
+`minhaColecao.getIndexes() `| para visualizar índices existentes.
+`minhaColecao.dropIndex()`| para remover um índice.
 ## Crud (Create/Read/Update/Delete)
 
 ### Create
